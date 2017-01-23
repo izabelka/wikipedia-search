@@ -4,7 +4,8 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
+      <a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">Random Wikipedia Article</a>
       </div>
     );
   }
