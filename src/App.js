@@ -8,27 +8,42 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-  		entry: "Te"
+  		entry: '',
+  		results: []
     };
+    this.getEntry = this.getEntry.bind(this);
+    this.submitEntry = this.submitEntry.bind(this);
 	}
 
-  getEntries() {
+	getEntry(event) {
+		let newEntry = event.target.value
+    this.setState({
+    	entry: newEntry
+    });
+  }
 
-    return $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&limit=10&origin=*&search=Te')
+  submitEntry(event) {
+  	console.log(this.state.entry)
+  	event.preventDefault();
+  	return $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&limit=10&origin=*&search=' + this.state.entry)
       .then((data) => {
       	console.log(data)
+      	this.setState({
+    			entry: ''
+    		});
       });
   }
+
   render() {
     return (
       <div className="container">
-      	<a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">Random Wikipedia Article</a>
+      	<form onSubmit={this.submitEntry}>
+	      	<input type="text" value={this.state.entry} onChange={this.getEntry} />
+	      	<input type="submit" value="Search" />
+      	</form>
+      	<a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">Random Article</a>
       </div>
     );
-  }
-
-  componentDidMount() {
-  	this.getEntries();
   }
 }
 
