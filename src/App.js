@@ -31,10 +31,17 @@ class App extends Component {
     			entry: '',
           results: data
     		});
-        var sprArray = [],  b={"title":this.state.results[1][0], "description": this.state.results[2][0], "link": this.state.results[3][0]}
+        var sprArray = [],  b={"title": data[1][0], "description": data[2][0], "link": data[3][0]}
+        data.forEach(function(i){
+          console.log(i[1]);
+        //   data[i].forEach(function(j){
+        //   sprArray.push(
+        //     {"title": data[i][j], "description": data[i][j], "link": data[i][j]})
+        // })
+        })
         console.log(sprArray)
-        sprArray.push(b)
-        console.log(sprArray)
+        // sprArray.push(b)
+        // console.log(sprArray)
       });
   }
 
