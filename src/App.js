@@ -23,13 +23,12 @@ class App extends Component {
   }
 
   submitEntry(event) {
-  	console.log(this.state.entry)
   	event.preventDefault();
   	return $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&limit=10&origin=*&search=' + this.state.entry)
       .then((data) => {
-      	console.log(data)
       	this.setState({
-    			entry: ''
+    			entry: '',
+          results: data
     		});
       });
   }
