@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
     this.state = {
   		entry: '',
-  		results: []
+  		results: [],
+      resultsObj: []
     };
     this.getEntry = this.getEntry.bind(this);
     this.submitEntry = this.submitEntry.bind(this);
@@ -30,10 +31,18 @@ class App extends Component {
     			entry: '',
           results: data
     		});
+        var sprArray = [],  b={"title":this.state.results[1][0], "description": this.state.results[2][0], "link": this.state.results[3][0]}
+        console.log(sprArray)
+        sprArray.push(b)
+        console.log(sprArray)
       });
   }
 
   render() {
+    // console.log(this.state.results[1])
+    // console.log(this.state.results[2])
+    // console.log(this.state.results[2][1])
+
     return (
       <div className="container">
       	<form onSubmit={this.submitEntry}>
