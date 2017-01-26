@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './App.css';
+import Result from './Result';
 
 
 class App extends Component {
@@ -27,28 +28,27 @@ class App extends Component {
   	event.preventDefault();
   	return $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&limit=10&origin=*&search=' + this.state.entry)
       .then((data) => {
+        var resultsArray = [], oneEntry = {}
+          for (var j=0; j < 10; j++){
+            oneEntry={"title": data[1][j], "description": data[2][j], "link": data[3][j]}
+            resultsArray.push(oneEntry)
+          }
       	this.setState({
     			entry: '',
-          results: data
+          results: resultsArray
     		});
-        var sprArray = [],  b={"title": data[1][0], "description": data[2][0], "link": data[3][0]}
-        data.forEach(function(i){
-          console.log(i[1]);
-        //   data[i].forEach(function(j){
-        //   sprArray.push(
-        //     {"title": data[i][j], "description": data[i][j], "link": data[i][j]})
-        // })
-        })
-        console.log(sprArray)
-        // sprArray.push(b)
-        // console.log(sprArray)
       });
   }
 
   render() {
-    // console.log(this.state.results[1])
-    // console.log(this.state.results[2])
-    // console.log(this.state.results[2][1])
+
+    var resultList = this.state.results;
+    resultList = resultList.map(function(result, index) {
+      return(
+        <Result key={ index }
+          result={ result } />
+      )
+    }, this)
 
     return (
       <div className="container">
@@ -57,6 +57,9 @@ class App extends Component {
 	      	<input type="submit" value="Search" />
       	</form>
       	<a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">Random Article</a>
+        <div id="result-list">
+          {resultList}
+        </div>
       </div>
     );
   }
