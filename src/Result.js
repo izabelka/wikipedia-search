@@ -11,7 +11,7 @@ class Result extends Component {
         <p className="description">
           {this.props.result.description}
         </p>
-        <a target="_blank" className="description" href={this.props.result.link}>
+        <a target="_blank" className="link" href={this.props.result.link}>
           {this.props.result.link}
         </a>
       </div>
