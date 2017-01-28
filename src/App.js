@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import './reset.css';
 import './App.css';
 import Result from './Result';
 
@@ -52,11 +53,13 @@ class App extends Component {
 
     return (
       <div className="container">
-      	<form onSubmit={this.submitEntry}>
-	      	<input type="text" value={this.state.entry} onChange={this.getEntry} />
-	      	<input type="submit" value="Search" />
-      	</form>
-      	<a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">Random Article</a>
+        <div id="searching">
+      	   <form onSubmit={this.submitEntry}>
+	      	    <input type="text" value={this.state.entry} onChange={this.getEntry} />
+	      	      <input type="submit" value="Search" />
+      	   </form>
+      	   <a id="random" target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">Random Article</a>
+        </div>
         <div id="result-list">
           {resultList}
         </div>
