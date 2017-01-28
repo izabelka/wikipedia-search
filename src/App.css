@@ -2,6 +2,7 @@ body {
   font-size: 14px;
   height: 100vh;
   width: 100vw;
+  font-family: 'Open Sans', sans-serif;
 /*  display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,5 +49,10 @@ input[type=submit]{
 .result-container h3 {
   font-size: 1.3em;
   font-weight: 700;
+  margin-bottom: .5em;
+}
+
+.result-container p {
+  line-height: 1.35em;
   margin-bottom: .5em;
 }

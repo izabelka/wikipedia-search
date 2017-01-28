@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
   		entry: '',
   		results: [],
-      resultsObj: []
+      resultsObj: [],
+      showResults: false
     };
     this.getEntry = this.getEntry.bind(this);
     this.submitEntry = this.submitEntry.bind(this);
@@ -36,7 +37,8 @@ class App extends Component {
           }
       	this.setState({
     			entry: '',
-          results: resultsArray
+          results: resultsArray,
+          showResults: true
     		});
       });
   }
@@ -49,7 +51,17 @@ class App extends Component {
         <Result key={ index }
           result={ result } />
       )
-    }, this)
+    }, this);
+
+    var showResults = {
+      'display': 'none'
+    }
+
+    if(this.state.showResults) {
+        showResults = {
+        'display': 'block'
+      }
+    }
 
     return (
       <div className="container">
@@ -60,9 +72,9 @@ class App extends Component {
       	   </form>
       	   <a id="random" target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">Random Article</a>
         </div>
-        <div id="result-list">
-          {resultList}
-        </div>
+          <div style={showResults} id="result-list">
+            {resultList}
+          </div>
       </div>
     );
   }
