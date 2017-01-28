@@ -28,7 +28,7 @@ class App extends Component {
 
   submitEntry(event) {
   	event.preventDefault();
-  	return $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&limit=10&origin=*&search=' + this.state.entry)
+  	return $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&limit=5&origin=*&search=' + this.state.entry)
       .then((data) => {
         var resultsArray = [], oneEntry = {}
           for (var j=0; j < 10; j++){
