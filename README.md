@@ -4,7 +4,7 @@
 
 A simple one page app in React.js for showing searched and random articles from Wikipedia
 
-***Demo:*** [https://izabelka.github.io/wikipedia-searcht](https://izabelka.github.io/wikipedia-search)
+***Demo:*** [https://izabelka.github.io/wikipedia-search](https://izabelka.github.io/wikipedia-search)
 
 ### To do:
 1. [x] Add API for searching articles on Wikipedia
