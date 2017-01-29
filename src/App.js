@@ -64,7 +64,7 @@ class App extends Component {
     }
 
     return (
-      <div className="container">
+      <div id="container">
         <div id="searching">
       	   <form onSubmit={this.submitEntry}>
 	      	    <input type="text" value={this.state.entry} onChange={this.getEntry} />
